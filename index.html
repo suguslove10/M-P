@@ -389,11 +389,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="aws-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="85"
+                    style="width: 85%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -409,11 +411,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="docker-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="80"
+                    style="width: 80%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -429,11 +433,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="jenkins-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="75"
+                    style="width: 75%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -449,11 +455,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="gcp-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="70"
+                    style="width: 70%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -473,11 +481,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="python-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="80"
+                    style="width: 80%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -493,11 +503,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="git-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="90"
+                    style="width: 90%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -513,11 +525,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="linux-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="85"
+                    style="width: 85%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -533,11 +547,13 @@
                 </div>
                 <div class="progress">
                   <div
+                    id="html-bar"
                     class="progress-bar"
                     role="progressbar"
                     aria-valuemin="0"
                     aria-valuemax="100"
                     aria-valuenow="65"
+                    style="width: 65%"
                   ></div>
                 </div>
                 <div class="spacer" data-height="50"></div>
@@ -1017,6 +1033,51 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js"></script>
+    
+    <!-- Inline script to animate progress bars on load -->
+    <script>
+      $(document).ready(function() {
+        // Reset all progress bars to 0 width initially
+        $('.progress-bar').css('width', '0%');
+        
+        // Function to animate progress bars
+        function animateProgressBars() {
+          $('#aws-bar').animate({width: '85%'}, 1500);
+          $('#docker-bar').animate({width: '80%'}, 1500);
+          $('#jenkins-bar').animate({width: '75%'}, 1500);
+          $('#gcp-bar').animate({width: '70%'}, 1500);
+          $('#python-bar').animate({width: '80%'}, 1500);
+          $('#git-bar').animate({width: '90%'}, 1500);
+          $('#linux-bar').animate({width: '85%'}, 1500);
+          $('#html-bar').animate({width: '65%'}, 1500);
+        }
+        
+        // Variable to track if animation has been triggered
+        var animated = false;
+        
+        // Check on scroll if the skills section is in view
+        $(window).scroll(function() {
+          var skillsSection = $('#skills');
+          
+          if (!animated && skillsSection.length) {
+            var windowHeight = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var skillsTop = skillsSection.offset().top;
+            
+            // If skills section is visible in viewport
+            if (skillsTop < (scrollTop + windowHeight - 200)) {
+              animated = true; // Set flag to prevent repeated animations
+              animateProgressBars();
+            }
+          }
+        });
+        
+        // Also check on page load in case the section is already visible
+        setTimeout(function() {
+          $(window).trigger('scroll');
+        }, 300);
+      });
+    </script>
   </body>
 
   <!-- Mirrored from pxltheme.com/html/bako/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 May 2020 03:23:46 GMT -->

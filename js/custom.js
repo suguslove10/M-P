@@ -306,31 +306,32 @@ $(function () {
             var progressBar = $(this);
             var value = progressBar.attr('aria-valuenow');
             
-            // Set custom property for width
-            progressBar.css('--progress-width', value + '%');
-            
             var position = progressBar.offset().top;
             var windowHeight = $(window).height();
             var scrollPosition = $(window).scrollTop();
             
             // Check if element is in viewport
             if (position < (scrollPosition + windowHeight - 100)) {
-                progressBar.addClass('animate');
+                // Directly set the width based on the aria-valuenow attribute
+                var valuePercent = value + '%';
+                progressBar.css('width', valuePercent);
+                
+                // Also set the custom property on the parent for the circle
+                progressBar.parent('.progress').css('--progress-width', valuePercent);
             }
         });
     }
     
     // Animate on scroll
-    $(window).on('scroll', function() {
-        animateProgressBars();
-    });
+    $(window).on('scroll', animateProgressBars);
     
-    // Trigger on page load for visible bars
+    // Trigger on page load
     $(document).ready(function() {
-        // Small delay to ensure DOM is fully loaded
-        setTimeout(function() {
-            animateProgressBars();
-        }, 100);
+        // Immediate execution
+        animateProgressBars();
+        
+        // And again after a short delay to ensure DOM is ready
+        setTimeout(animateProgressBars, 300);
     });
 
     /*=========================================================================

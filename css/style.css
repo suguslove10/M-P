@@ -432,6 +432,8 @@ header .copyright {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 999;
 }
 
 .mobile-header.push {
@@ -470,6 +472,8 @@ header .copyright {
     outline: none;
     vertical-align: middle;
     padding: 0;
+    z-index: 1000;
+    position: relative;
 }
 
 .mobile-header button.menu-icon span {
@@ -497,6 +501,8 @@ header .copyright {
     width: 1170px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 1;
 }
 
 main.content {
@@ -1937,6 +1943,7 @@ input:checked+.slider:before {
         width: 100%;
         padding-left: 15px;
         padding-right: 15px;
+        z-index: 1;
     }
 
     header.left {
@@ -1963,6 +1970,7 @@ input:checked+.slider:before {
 
     .mobile-header {
         display: block;
+        z-index: 999;
     }
 
     main.content {

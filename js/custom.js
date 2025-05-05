@@ -125,26 +125,45 @@ $(window).on("load", function () {
     };
 
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
-            toggleSwitch.checked = true;
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Function to check system preference for first visit
+    function getInitialTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        // If user has explicitly set a theme, use that
+        if (savedTheme) {
+            return savedTheme;
         }
+        // Otherwise, use system preference
+        return prefersDarkScheme.matches ? 'dark' : 'light';
+    }
+
+    // Set initial theme
+    const currentTheme = getInitialTheme();
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
     }
 
     function switchTheme(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            localStorage.setItem('darkMode', '');
-        }
+        const isDark = e.target.checked;
+        const theme = isDark ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
     }
+
     toggleSwitch.addEventListener('change', switchTheme, false);
+
+    // Listen for changes in system color scheme preference
+    prefersDarkScheme.addEventListener('change', (e) => {
+        // Only update based on system preference if user hasn't set a preference
+        if (!localStorage.getItem('theme')) {
+            const newTheme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            toggleSwitch.checked = e.matches;
+        }
+    });
 
     /*=========================================================================
      Typewriter

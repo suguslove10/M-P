@@ -86,10 +86,15 @@
     <!-- SCRIPTS -->
     <script src="/js/jquery-1.12.3.min.js"></script>
     <script>
-      // Enable dark mode if it was enabled on the main page
+      // Initialize theme based on user preference
       document.addEventListener('DOMContentLoaded', function() {
-        const darkMode = localStorage.getItem('darkMode');
-        if (darkMode === 'enabled') {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Use saved theme if available, otherwise use system preference
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (prefersDarkScheme.matches) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
       });

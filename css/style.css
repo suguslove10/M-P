@@ -2062,32 +2062,163 @@ input:checked+.slider:before {
 }
 
 @media only screen and (max-width: 767px) {
-    .hero .cta h1 {
-        font-size: 48px;
-        line-height: 1.2;
-    }
-
-    .hero .cta h1 .dot {
-        display: none;
-    }
-
-    .hero .cta p {
+    /* General mobile improvements */
+    body {
         font-size: 15px;
-        margin-bottom: 25px !important;
     }
-
+    
+    /* Adjust content padding for mobile */
+    section.padding {
+        padding: 50px 25px;
+    }
+    
+    section.padding-50 {
+        padding: 35px 20px;
+    }
+    
+    /* Improve hero section on mobile */
     .hero {
         height: auto;
-        margin-top: 0;
-        padding: 60px 30px;
+        min-height: 450px;
+        padding: 50px 20px;
     }
-
-    .fact-item {
-        margin: 20px 0;
+    
+    .hero .cta h1 {
+        font-size: 36px;
+        line-height: 1.2;
     }
-
-    .blog-item {
-        margin: 15px 0;
+    
+    .hero .cta p {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+    
+    /* Buttons look better stacked on mobile */
+    .hero .cta .btn {
+        margin-bottom: 15px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Make about section more mobile-friendly */
+    #about img {
+        max-width: 150px;
+        margin: 0 auto 20px;
+        display: block;
+    }
+    
+    /* Adjust spacing for mobile */
+    .spacer {
+        height: 30px !important;
+    }
+    
+    /* Make services look better on mobile */
+    .service-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Adjust timeline for mobile */
+    .timeline .entry .title {
+        width: 100%;
+        float: none;
+        margin-bottom: 10px;
+    }
+    
+    .timeline .entry .title:before {
+        display: none;
+    }
+    
+    .timeline .entry .body {
+        width: 100%;
+        float: none;
+        padding-left: 0;
+    }
+    
+    .timeline-line {
+        display: none;
+    }
+    
+    /* Improve form layout on mobile */
+    .contact-form-container {
+        padding: 20px;
+    }
+    
+    /* Fix the content wrapper on mobile */
+    main.content {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    /* Ensure all sections fit properly */
+    section {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+    }
+    
+    /* Better touch targets for mobile */
+    .btn, button, a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Fix form elements for mobile */
+    input, textarea, select {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Improved mobile form inputs */
+    .form-control {
+        height: 46px;
+        padding: 10px 20px;
+    }
+    
+    textarea.form-control {
+        height: auto;
+        min-height: 100px;
+    }
+    
+    /* Better spacing for mobile content */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    /* Social icons better spacing on mobile */
+    .social-icons li {
+        margin-bottom: 10px;
+    }
+    
+    .social-icons li a {
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+    }
+    
+    /* Adjust skill bars for mobile */
+    .progress {
+        margin-bottom: 15px;
+    }
+    
+    /* Adjust facts counter for mobile */
+    #facts .fact-item {
+        margin-bottom: 30px;
+    }
+    
+    /* Adjust contact section for mobile */
+    .contact-info {
+        margin-bottom: 20px !important;
     }
 }
 
@@ -2124,4 +2255,33 @@ input:checked+.slider:before {
 
 [data-theme=dark] header.left .vertical-menu li a.active:before {
     background: #FF5959;
+}
+
+/* Mobile header scrolled state */
+.mobile-header.scrolled {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1010;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* Small mobile screens */
+@media only screen and (max-width: 375px) {
+    .hero .cta h1 {
+        font-size: 28px;
+    }
+    
+    section.padding {
+        padding: 40px 20px;
+    }
 }

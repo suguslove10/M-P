@@ -11,8 +11,11 @@
     />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
     />
+    <meta name="theme-color" content="#1c2129" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
 
     <!-- STYLESHEETS -->
@@ -47,6 +50,23 @@
     <style>
       :root {
         --accent-color: #3498db;
+      }
+      
+      /* Fix for very small screens */
+      @media only screen and (max-width: 320px) {
+        html {
+          font-size: 14px;
+        }
+        .btn {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+        .hero .cta h1 {
+          font-size: 24px;
+        }
+        section {
+          padding: 30px 15px !important;
+        }
       }
       
       .float-back {

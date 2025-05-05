@@ -392,4 +392,46 @@ $(function () {
             scrollTop : 0                       // Scroll to top of body
         }, 400);
     });
+
+    // Check if we're on a mobile device
+    const isMobile = window.innerWidth <= 767;
+    
+    // Optimize animations for mobile
+    if (isMobile) {
+        // Reduce animation complexity on mobile
+        $('.progress-bar').css('transition', 'width 0.8s ease-out');
+        
+        // Add touch-specific classes
+        $('body').addClass('mobile-device');
+        
+        // Make anchor links work better on mobile
+        $('a[href^="#"]:not([href="#"]').on('click', function(event) {
+            event.preventDefault();
+            const $anchor = $(this);
+            const offset = 60; // Account for fixed header
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - offset
+            }, 800, 'easeInOutQuad');
+        });
+    }
+    
+    // Add a scroll class to body when scrolling starts
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 20) {
+            $('body').addClass('is-scrolling');
+            $('.mobile-header').addClass('scrolled');
+        } else {
+            $('body').removeClass('is-scrolling');
+            $('.mobile-header').removeClass('scrolled');
+        }
+    });
+    
+    // Lazy-load images on mobile
+    if (isMobile) {
+        $('img[data-src]').each(function() {
+            const img = $(this);
+            img.attr('src', img.data('src'));
+            img.removeAttr('data-src');
+        });
+    }
 });

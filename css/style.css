@@ -482,18 +482,28 @@ header .copyright {
     width: 6px;
 }
 
+.mobile-header button.menu-icon,
 .mobile-header .menu-trigger {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    position: relative;
     cursor: pointer;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     transition: all 0.3s ease;
-    width: 40px;
-    height: 40px;
 }
 
+.mobile-header button.menu-icon:hover,
+.mobile-header .menu-trigger:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.mobile-header button.menu-icon:active,
 .mobile-header .menu-trigger:active {
     transform: scale(0.95);
 }
@@ -2220,7 +2230,7 @@ input:checked+.slider:before {
     .contact-info {
         margin-bottom: 20px !important;
     }
-}
+}   
 
 @media only screen and (max-width: 515px) {
     .pf-filter-wrapper {
@@ -2283,5 +2293,47 @@ input:checked+.slider:before {
     
     section.padding {
         padding: 40px 20px;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 991px) {
+    /* Improve menu button accessibility */
+    .mobile-header .menu-trigger {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    
+    /* Make the mobile menu more touch-friendly */
+    header.left .vertical-menu li a {
+        padding: 12px 15px;
+        display: block;
+        width: 100%;
+        -webkit-tap-highlight-color: rgba(255,255,255,0.1);
+        touch-action: manipulation;
+    }
+    
+    /* Fix click target size for menu items */
+    header.left .vertical-menu li {
+        margin-bottom: 5px;
+        line-height: 1.5;
+    }
+    
+    /* Improved close button for mobile */
+    header.left button.close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        z-index: 1050;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        display: block;
     }
 }

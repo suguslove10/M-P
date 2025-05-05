@@ -286,6 +286,21 @@ $(function () {
             return false;
         });
 
+        // Ensure the menu toggle works on mobile by adding a backup handler
+        $(document).on('touchend', '.menu-trigger, #mobile-menu-btn', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            $('header.left').toggleClass('open');
+            
+            // Haptic feedback for mobile (vibration)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            return false;
+        });
+
         // Close button click event
         $('header.left .close').on('click touchstart', function(event) {
             event.preventDefault();

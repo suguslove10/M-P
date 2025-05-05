@@ -301,7 +301,7 @@ $(function () {
     /*=========================================================================
      Progressbar animation
      =========================================================================*/
-    $(window).on('scroll', function() {
+    function animateProgressBars() {
         $('.progress .progress-bar').each(function() {
             var progressBar = $(this);
             var value = progressBar.attr('aria-valuenow');
@@ -318,11 +318,19 @@ $(function () {
                 progressBar.addClass('animate');
             }
         });
+    }
+    
+    // Animate on scroll
+    $(window).on('scroll', function() {
+        animateProgressBars();
     });
     
     // Trigger on page load for visible bars
     $(document).ready(function() {
-        $(window).trigger('scroll');
+        // Small delay to ensure DOM is fully loaded
+        setTimeout(function() {
+            animateProgressBars();
+        }, 100);
     });
 
     /*=========================================================================

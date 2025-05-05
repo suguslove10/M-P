@@ -276,14 +276,11 @@ $(function () {
             event.preventDefault();
             event.stopPropagation();
             
-            // Only apply push effects on mobile
-            if (window.innerWidth <= 991) {
-                $('header.left').toggleClass('open');
-                
-                // Haptic feedback for mobile (vibration)
-                if (navigator.vibrate) {
-                    navigator.vibrate(50);
-                }
+            $('header.left').toggleClass('open');
+            
+            // Haptic feedback for mobile (vibration)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
             }
             
             return false;
@@ -320,7 +317,7 @@ $(function () {
         
         // Handle document click to close menu when clicking outside
         $(document).on('click touchstart', function(e) {
-            if (window.innerWidth <= 991 && !$(e.target).closest('header.left, .menu-trigger, #mobile-menu-btn').length) {
+            if (window.innerWidth <= 991 && !$(e.target).closest('header.left, .menu-trigger, #mobile-menu-btn, .fa-bars').length) {
                 $('header.left').removeClass('open');
             }
         });

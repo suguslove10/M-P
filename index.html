@@ -150,26 +150,29 @@
     <div class="site-wrapper">
       <!-- mobile header -->
       <div class="mobile-header py-2 px-3 mt-4">
-        <button type="button" id="mobile-menu-btn" class="menu-icon mr-2" style="position: relative; z-index: 1001; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px; width: 45px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 4px 15px 4px 4px; border: none; outline: none; -webkit-tap-highlight-color: rgba(255,255,255,0.3);">
-          <span style="margin: 2px 0; width: 25px;"></span>
-          <span style="margin: 2px 0; width: 25px;"></span>
-          <span style="margin: 2px 0; width: 25px;"></span>
-        </button>
-        <a href="/" class="logo">
-          <img src="/images/logo.png" alt="Suguresh" />
-        </a>
-        <a href="/" class="site-title dot ml-2">SUGURESH</a>
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <div id="mobile-menu-btn" class="menu-trigger" style="cursor: pointer; position: relative; z-index: 1001; padding: 8px; margin-right: 10px;">
+            <i class="fas fa-bars" style="font-size: 24px; color: #fff;"></i>
+          </div>
+          
+          <div class="d-flex align-items-center">
+            <a href="/" class="profile-img mr-3">
+              <img src="/images/about.png" alt="Suguresh" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;" />
+            </a>
+            <a href="/" class="site-title dot" style="font-size: 24px; font-weight: 700; color: #fff;">SUGURESH</a>
+          </div>
+        </div>
       </div>
 
-      <!-- header -->
+      <!-- header / side menu -->
       <header class="left float-left shadow-dark" id="header">
         <button type="button" class="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <div class="header-inner d-flex align-items-start flex-column">
-          <a href="/"
-            ><img src="/images/logo.png" alt="Bako Doe" width="70" height="70"
-          /></a>
+          <a href="/">
+            <img src="/images/logo.png" alt="Suguresh" width="70" height="70" />
+          </a>
           <a href="/" class="site-title dot mt-3">SUGURESH</a>
           <span class="site-slogan">Tech Enthusiast</span>
 
@@ -213,15 +216,15 @@
                   <i class="fab fa-instagram"></i>
                 </a>
               </li>
-              <li class="list-inline-item" title="Linkedin">
-                <a target="_blank" href="https://www.linkedin.com/in/suguresh"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
+              <li class="list-inline-item" title="LinkedIn">
+                <a target="_blank" href="https://www.linkedin.com/in/suguresh">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
               </li>
-              <li class="list-inline-item" title="Github">
-                <a target="_blank" href="https://github.com/suguslove10"
-                  ><i class="fab fa-github"></i
-                ></a>
+              <li class="list-inline-item" title="GitHub">
+                <a target="_blank" href="https://github.com/suguslove10">
+                  <i class="fab fa-github"></i>
+                </a>
               </li>
             </ul>
 
@@ -235,14 +238,14 @@
             </div>
 
             <!-- copyright -->
-            <span class="copyright"
-              >Configured with
+            <span class="copyright">
+              Configured with
               <i style="color: #ff5959" class="fas fa-heart"></i> at 2024 <br />
               by
-              <a target="_blank" href="https://thesugu.com"
-                ><strong>thesugu.com</strong></a
-              ></span
-            >
+              <a target="_blank" href="https://thesugu.com">
+                <strong>thesugu.com</strong>
+              </a>
+            </span>
           </div>
         </div>
       </header>

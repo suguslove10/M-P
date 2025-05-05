@@ -272,24 +272,19 @@ $(function () {
      =========================================================================*/
     $(document).ready(function() {
         // Mobile menu button click event
-        $('#mobile-menu-btn, .menu-icon button').on('click touchstart', function(event) {
+        $('.menu-trigger, #mobile-menu-btn').on('click touchstart', function(event) {
             event.preventDefault();
             event.stopPropagation();
             
-            $('header.left').toggleClass('open');
-            $('.mobile-header').toggleClass('push');
-            $('.site-wrapper').toggleClass('push');
-            $('.site-wrapper').addClass('overlay');
-            
-            // Haptic feedback for mobile (vibration)
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
+            // Only apply push effects on mobile
+            if (window.innerWidth <= 991) {
+                $('header.left').toggleClass('open');
+                
+                // Haptic feedback for mobile (vibration)
+                if (navigator.vibrate) {
+                    navigator.vibrate(50);
+                }
             }
-            
-            // Force repaint to ensure animation is smooth
-            setTimeout(function() {
-                $('header.left').css('transform');
-            }, 10);
             
             return false;
         });
@@ -300,9 +295,6 @@ $(function () {
             event.stopPropagation();
             
             $('header.left').removeClass('open');
-            $('.mobile-header').removeClass('push');
-            $('.site-wrapper').removeClass('push');
-            $('.site-wrapper').removeClass('overlay');
             
             // Haptic feedback for mobile (vibration)
             if (navigator.vibrate) {
@@ -312,19 +304,24 @@ $(function () {
             return false;
         });
         
-        // Menu item toggle
-        $('.vertical-menu li.menu-item-has-children > a').on('click', function () {
+        // Menu item click (close menu when menu item is clicked on mobile)
+        $('.vertical-menu li a').on('click touchstart', function() {
+            if (window.innerWidth <= 991) {
+                $('header.left').removeClass('open');
+            }
+        });
+        
+        // Menu item toggle for sub-menus if needed
+        $('.vertical-menu li.menu-item-has-children > a').on('click', function(e) {
+            e.preventDefault();
             $(this).parent().toggleClass('opened');
             return false;
         });
         
         // Handle document click to close menu when clicking outside
         $(document).on('click touchstart', function(e) {
-            if (!$(e.target).closest('.site-wrapper.overlay, header.left, .menu-icon, #mobile-menu-btn').length) {
+            if (window.innerWidth <= 991 && !$(e.target).closest('header.left, .menu-trigger, #mobile-menu-btn').length) {
                 $('header.left').removeClass('open');
-                $('.mobile-header').removeClass('push');
-                $('.site-wrapper').removeClass('push');
-                $('.site-wrapper').removeClass('overlay');
             }
         });
     });

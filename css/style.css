@@ -42,6 +42,15 @@ Description: Personal Portfolio & Resume HTML Template
     --shadow-color: 0 6px 15px 0 rgba(0, 0, 0, .2)
 }
 
+[data-theme=dark] .mobile-header button.menu-icon {
+    background: rgba(255,255,255,0.15);
+}
+
+[data-theme=dark] header.left.open {
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
 /*=================================================================*/
 /*                      BASE                              
 /*=================================================================*/
@@ -285,6 +294,7 @@ header.left {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    z-index: 1000;
 }
 
 header.left nav {
@@ -480,13 +490,26 @@ header .copyright {
     background: #FFF;
     border-radius: 10px;
     display: block;
-    height: 4px;
+    height: 3px;
     width: 25px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .mobile-header button.menu-icon span:nth-child(2) {
     margin-top: 4px;
     margin-bottom: 4px;
+}
+
+.mobile-header button.menu-icon:active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-header button.menu-icon:active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-header button.menu-icon:active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .mobile-header a {
@@ -1954,6 +1977,7 @@ input:checked+.slider:before {
         -ms-transform: translateX(-380px);
         -o-transform: translateX(-380px);
         transform: translateX(-380px);
+        box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.3);
     }
 
     header.left.open {
@@ -1962,6 +1986,8 @@ input:checked+.slider:before {
         -ms-transform: translateX(0);
         -o-transform: translateX(0);
         transform: translateX(0);
+        box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.5);
+        z-index: 1050;
     }
 
     header.left button.close {
@@ -2034,4 +2060,13 @@ input:checked+.slider:before {
     header.left .footer {
         margin-top: 50px !important;
     }
+}
+
+[data-theme=dark] header.left {
+    background: #1c2129;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme=dark] header.left .vertical-menu li a.active:before {
+    background: #FF5959;
 }

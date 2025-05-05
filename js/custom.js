@@ -270,18 +270,36 @@ $(function () {
     /*=========================================================================
      Menu
      =========================================================================*/
-    $('.menu-icon button').on('click', function () {
+    $('.menu-icon button').on('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
         $('header.left').toggleClass('open');
         $('.mobile-header').toggleClass('push');
         $('.site-wrapper').toggleClass('push');
         $('.site-wrapper').addClass('overlay');
+        
+        // Haptic feedback for mobile (vibration)
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
+        
+        // Force repaint to ensure animation is smooth
+        setTimeout(function() {
+            $('header.left').css('transform');
+        }, 10);
     });
 
-    $('header.left .close').on('click', function () {
+    $('header.left .close').on('click', function() {
         $('header.left').removeClass('open');
         $('.mobile-header').removeClass('push');
         $('.site-wrapper').removeClass('push');
         $('.site-wrapper').removeClass('overlay');
+        
+        // Haptic feedback for mobile (vibration)
+        if (navigator.vibrate) {
+            navigator.vibrate(50);
+        }
     });
 
     // Menu item toggle

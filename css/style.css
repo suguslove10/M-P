@@ -1558,19 +1558,36 @@ section.padding-60 {
 }
 
 .progress-bar {
-    float: left;
+    position: relative;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--accent-color), #2ecc71);
+    transition: width 1s ease-in-out;
     width: 0;
-    height: 100%;
-    font-size: 12px;
-    line-height: 3px;
-    color: #fff;
-    text-align: center;
-    background-color: #FF5959;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: width 0.6s ease;
-    -o-transition: width 0.6s ease;
-    transition: width 0.6s ease;
+}
+
+.progress-bar.animate {
+    animation: progressAnimation 1.5s ease-in-out forwards;
+}
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: var(--progress-width);
+    }
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #2ecc71;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 /*=================================================================*/

@@ -301,9 +301,28 @@ $(function () {
     /*=========================================================================
      Progressbar animation
      =========================================================================*/
-    $('.progress .progress-bar').appear(function() {
-        var value = $(this).attr('aria-valuenow');
-        $(this).css('width', value + '%');
+    $(window).on('scroll', function() {
+        $('.progress .progress-bar').each(function() {
+            var progressBar = $(this);
+            var value = progressBar.attr('aria-valuenow');
+            
+            // Set custom property for width
+            progressBar.css('--progress-width', value + '%');
+            
+            var position = progressBar.offset().top;
+            var windowHeight = $(window).height();
+            var scrollPosition = $(window).scrollTop();
+            
+            // Check if element is in viewport
+            if (position < (scrollPosition + windowHeight - 100)) {
+                progressBar.addClass('animate');
+            }
+        });
+    });
+    
+    // Trigger on page load for visible bars
+    $(document).ready(function() {
+        $(window).trigger('scroll');
     });
 
     /*=========================================================================

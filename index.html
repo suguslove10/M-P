@@ -910,20 +910,15 @@
             <div class="col-md-8">
               <!-- Contact Form -->
               <div class="contact-form-container">
-                <!-- Hidden iframe for form submission target -->
-                <iframe name="hidden-iframe" style="display:none;"></iframe>
-                
                 <form
                   id="contact-form" 
                   class="contact-form shadow-sm p-4 rounded fade-in-up"
                   action="https://formsubmit.co/sugugalag@gmail.com" 
                   method="POST"
-                  target="hidden-iframe"
-                  onsubmit="return handleFormSubmit(event);"
                 >
                   <!-- FormSubmit configuration -->
-                  <input type="hidden" name="_next" value="https://thesugu.com/thank-you.html">
-                  <input type="hidden" name="_subject" value="New Contact Form Submission">
+                  <input type="hidden" name="_next" value="thank-you.html">
+                  <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio">
                   <input type="hidden" name="_captcha" value="false">
                   <input type="hidden" name="_template" value="table">
                   
@@ -988,9 +983,6 @@
                     </div>
                   </div>
 
-                  <!-- Honeypot field to prevent spam -->
-                  <input type="text" name="_honey" style="display:none">
-
                   <button type="submit" class="btn btn-default">
                     <i class="icon-paper-plane mr-2"></i>Send Message
                   </button>
@@ -1025,25 +1017,6 @@
     <script src="/js/slick.min.js"></script>
     <script src="/js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.appear@1.0.1/jquery.appear.min.js"></script>
-    
-    <!-- Custom form handling script -->
-    <script>
-      function handleFormSubmit(event) {
-        // Get form data
-        const name = document.getElementById('contact-name').value;
-        const email = document.getElementById('contact-email').value;
-        const subject = document.getElementById('contact-subject').value;
-        const message = document.getElementById('contact-message').value;
-        
-        // Form is valid and will submit through the hidden iframe
-        // Wait a moment and redirect to thank you page
-        setTimeout(function() {
-          window.location.href = 'thank-you.html';
-        }, 1000);
-        
-        return true;
-      }
-    </script>
   </body>
 
   <!-- Mirrored from pxltheme.com/html/bako/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 30 May 2020 03:23:46 GMT -->

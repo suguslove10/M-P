@@ -46,9 +46,14 @@ Description: Personal Portfolio & Resume HTML Template
     background: rgba(255,255,255,0.15);
 }
 
+[data-theme=dark] header.left {
+    background: #1c2129;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 [data-theme=dark] header.left.open {
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 }
 
 /*=================================================================*/
@@ -444,6 +449,9 @@ header .copyright {
     transition: all 0.3s ease-in-out;
     position: relative;
     z-index: 999;
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
 }
 
 .mobile-header.push {
@@ -477,13 +485,18 @@ header .copyright {
 
 .mobile-header button.menu-icon {
     cursor: pointer;
-    background: transparent;
+    background: rgba(255,255,255,0.2);
     border: 0;
     outline: none;
     vertical-align: middle;
-    padding: 0;
+    padding: 10px;
     z-index: 1000;
     position: relative;
+    border-radius: 5px;
+    min-width: 45px;
+    min-height: 40px;
+    margin-right: 15px;
+    touch-action: manipulation;
 }
 
 .mobile-header button.menu-icon span {
@@ -493,11 +506,7 @@ header .copyright {
     height: 3px;
     width: 25px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mobile-header button.menu-icon span:nth-child(2) {
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin: 4px 0;
 }
 
 .mobile-header button.menu-icon:active span:nth-child(1) {

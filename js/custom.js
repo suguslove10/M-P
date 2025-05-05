@@ -270,53 +270,65 @@ $(function () {
     /*=========================================================================
      Menu
      =========================================================================*/
-    $('.menu-icon button').on('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        $('header.left').toggleClass('open');
-        $('.mobile-header').toggleClass('push');
-        $('.site-wrapper').toggleClass('push');
-        $('.site-wrapper').addClass('overlay');
-        
-        // Haptic feedback for mobile (vibration)
-        if (navigator.vibrate) {
-            navigator.vibrate(50);
-        }
-        
-        // Force repaint to ensure animation is smooth
-        setTimeout(function() {
-            $('header.left').css('transform');
-        }, 10);
-    });
+    $(document).ready(function() {
+        // Mobile menu button click event
+        $('#mobile-menu-btn, .menu-icon button').on('click touchstart', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            $('header.left').toggleClass('open');
+            $('.mobile-header').toggleClass('push');
+            $('.site-wrapper').toggleClass('push');
+            $('.site-wrapper').addClass('overlay');
+            
+            // Haptic feedback for mobile (vibration)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            // Force repaint to ensure animation is smooth
+            setTimeout(function() {
+                $('header.left').css('transform');
+            }, 10);
+            
+            return false;
+        });
 
-    $('header.left .close').on('click', function() {
-        $('header.left').removeClass('open');
-        $('.mobile-header').removeClass('push');
-        $('.site-wrapper').removeClass('push');
-        $('.site-wrapper').removeClass('overlay');
-        
-        // Haptic feedback for mobile (vibration)
-        if (navigator.vibrate) {
-            navigator.vibrate(50);
-        }
-    });
-
-    // Menu item toggle
-    $('.vertical-menu li.menu-item-has-children > a').on('click', function () {
-        $(this).parent().toggleClass('opened');
-        return false;
-    });
-
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.site-wrapper.overlay').length) {
+        // Close button click event
+        $('header.left .close').on('click touchstart', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
             $('header.left').removeClass('open');
             $('.mobile-header').removeClass('push');
             $('.site-wrapper').removeClass('push');
             $('.site-wrapper').removeClass('overlay');
-        }
+            
+            // Haptic feedback for mobile (vibration)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+            
+            return false;
+        });
+        
+        // Menu item toggle
+        $('.vertical-menu li.menu-item-has-children > a').on('click', function () {
+            $(this).parent().toggleClass('opened');
+            return false;
+        });
+        
+        // Handle document click to close menu when clicking outside
+        $(document).on('click touchstart', function(e) {
+            if (!$(e.target).closest('.site-wrapper.overlay, header.left, .menu-icon, #mobile-menu-btn').length) {
+                $('header.left').removeClass('open');
+                $('.mobile-header').removeClass('push');
+                $('.site-wrapper').removeClass('push');
+                $('.site-wrapper').removeClass('overlay');
+            }
+        });
     });
-    
+
     /*=========================================================================
      One Page Scroll
      =========================================================================*/

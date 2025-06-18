@@ -1,0 +1,25 @@
+{
+    "name": "Suguresh - Associate Cloud Engineer",
+    "short_name": "Suguresh Portfolio",
+    "description": "Associate Cloud Engineer specializing in AWS, DevOps, and cloud infrastructure solutions.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#4A63E7",
+    "theme_color": "#FF5959",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["portfolio", "professional", "cloud", "engineering"],
+    "lang": "en",
+    "dir": "ltr"
+}
